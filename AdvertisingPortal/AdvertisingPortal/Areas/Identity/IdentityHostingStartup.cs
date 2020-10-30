@@ -15,12 +15,18 @@ namespace AdvertisingPortal.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
+            builder.ConfigureServices((context, services) =>
+            {
                 services.AddDbContext<AdvertisingPortalDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AdvertisingPortalDbContextConnection")));
 
-                services.AddDefaultIdentity<AdvertisingPortalUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                services.AddDefaultIdentity<AdvertisingPortalUser>(options =>
+                {
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                })
                     .AddEntityFrameworkStores<AdvertisingPortalDbContext>();
             });
         }
