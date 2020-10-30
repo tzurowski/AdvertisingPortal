@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
@@ -26,3 +26,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    @RenderSection("Scripts", required: false)
+}
