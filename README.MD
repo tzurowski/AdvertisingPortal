@@ -1,0 +1,1 @@
+Advertising Portal Project - ASP.NET Core with Entity Framework
