@@ -20,7 +20,7 @@ namespace AdvertisingPortal.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AdvertisingPortalDbContextConnection")));
 
-                services.AddDefaultIdentity<AdvertisingPortalUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<AdvertisingPortalUser>(options => options.SignIn.RequireConfirmedAccount = false)
                     .AddEntityFrameworkStores<AdvertisingPortalDbContext>();
             });
         }
