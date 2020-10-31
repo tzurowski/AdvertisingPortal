@@ -16,7 +16,7 @@
         </form>
     </li>
 }
-else
+else if (!Context.Request.Path.ToString().Contains("Login") && !Context.Request.Path.ToString().Contains("Register"))
 {
     <li class="nav-item">
         <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
