@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using AdvertisingPortal.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace AdvertisingPortal.Areas.Identity.Data
@@ -17,5 +18,8 @@ namespace AdvertisingPortal.Areas.Identity.Data
         [PersonalData]
         [Column(TypeName = "nvarchar(50)")]
         public string LastName { get; set; }
+
+        [PersonalData]
+        public ICollection<Advertisement> Advertisements { get; set; }
     }
 }
