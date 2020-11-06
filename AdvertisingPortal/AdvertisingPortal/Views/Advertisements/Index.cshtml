@@ -1,4 +1,8 @@
-﻿@model IEnumerable<AdvertisingPortal.Models.Advertisement>
+﻿@model IPagedList<AdvertisingPortal.Models.Advertisement>
+
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
 
 @{
     ViewData["Title"] = "Index";
