@@ -12,13 +12,14 @@ namespace AdvertisingPortal.Controllers
     public class AdvertisementsController : Controller
     {
         private readonly AdvertisingPortalDbContext _db;
+
         public AdvertisementsController(AdvertisingPortalDbContext db)
         {
             _db = db;
         }
-        public IActionResult Index(int? i)
+        public IActionResult Index(string search, int? i)
         {
-            var ads = _db.Advertisements.Select(c => c).ToList().ToPagedList(i ?? 1, 2);
+            var ads = _db.Advertisements.Where(x => x.Title.Contains(search) || search == null).ToList().ToPagedList(i ?? 1, 2);
             return View(ads);
         }
     }

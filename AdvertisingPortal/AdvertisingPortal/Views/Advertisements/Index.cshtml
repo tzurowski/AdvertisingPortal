@@ -11,9 +11,17 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<form method="get" asp-action="Index">
+    <div class="form-group row">
+        <div class="col-md-3">
+            <input type="text" name="search" class="form-control" />
+        </div>
+        <div class="col-md-2">
+            <button type="submit" value="Search" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -70,10 +78,9 @@
     </tbody>
 </table>
 
-@Html.PagedListPager(Model, i=> Url.Action("Index", "Advertisements", new {i }), new PagedListRenderOptionsBase
+@Html.PagedListPager(Model, i=> Url.Action("Index", new {i, search=Context.Request.Query["search"]}), new PagedListRenderOptionsBase
 {
     LiElementClasses = new string[] { "page-item" },
     PageClasses = new string[] { "page-link" },
     Display = PagedListDisplayMode.IfNeeded
-
 })
