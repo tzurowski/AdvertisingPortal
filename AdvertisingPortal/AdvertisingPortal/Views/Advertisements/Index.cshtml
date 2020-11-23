@@ -1,4 +1,4 @@
-﻿@model IPagedList<AdvertisingPortal.Models.Advertisement>
+﻿@model IPagedList<AdvertisingPortal.ModelView.AdvertisementMV>
 
 @using X.PagedList;
 @using X.PagedList.Mvc.Core;
@@ -12,7 +12,7 @@
 <h1>Index</h1>
 
 <form method="get" asp-action="Index">
-    <div class="form-group row">
+    <div class="form-group row col-md-12">
         <div class="col-md-3">
             <input type="text" name="search" class="form-control" />
         </div>
@@ -21,64 +21,31 @@
         </div>
     </div>
 </form>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card col-md-3.5 p-4 m-1" style="background-color: aquamarine">
+            <div class="card-img-top">
+                <img src="~/images/@item.ImageUrl" width="300" height="200">
+            </div>
+            <div class="col-md-12 card-body">
+                <h5 class="card-title">@item.Title</h5> <br />
+                @item.Make @item.Model <br />
+                Price: @item.Price <br />
+                Year: @item.Year.Year <br />
+                FuelTank: @item.FuelTank <br />
+                FuelType: @item.FuelType <br />
+                Description: @item.Description <br />
+            </div>
+            <div>
+                <button class="btn btn-dark col-md-12">View details</button>
+            </div>
+                
+        </div>
+    }
+</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.First().AdvertisementId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Discription)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AdvertisementId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImageUrl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Discription)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-@Html.PagedListPager(Model, i=> Url.Action("Index", new {i, search=Context.Request.Query["search"]}), new PagedListRenderOptionsBase
+@Html.PagedListPager(Model, i => Url.Action("Index", new { i, search = Context.Request.Query["search"] }), new PagedListRenderOptionsBase
 {
     LiElementClasses = new string[] { "page-item" },
     PageClasses = new string[] { "page-link" },
