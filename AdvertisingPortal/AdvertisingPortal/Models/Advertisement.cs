@@ -21,7 +21,7 @@ namespace AdvertisingPortal.Models
         public decimal Price { get; set; }
 
         public string ImageUrl { get; set; }
-        public string Discription { get; set; }
+        public string Description { get; set; }
         public Car Car { get; set; }
         public AdvertisingPortalUser User { get; set; }
     }

@@ -4,14 +4,16 @@ using AdvertisingPortal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdvertisingPortal.Migrations
 {
     [DbContext(typeof(AdvertisingPortalDbContext))]
-    partial class AdvertisingPortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201123200859_FixPropertyName")]
+    partial class FixPropertyName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
