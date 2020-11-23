@@ -26,5 +26,8 @@ namespace AdvertisingPortal.Models
         public float FuelTank { get; set; }
         public string FuelType { get; set; }
 
+        public int AdvertisementId { get; set; }
+        public Advertisement Advertisement { get; set; }
+
     }
 }
